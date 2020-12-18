@@ -317,7 +317,9 @@ public class CAPBridgeViewController: UIViewController, CAPBridgeDelegate {
           else {
           return
         }
+
         let request = URLRequest(url: url)
+
         DispatchQueue.main.async {
           self.getWebView().load(request)
         }
