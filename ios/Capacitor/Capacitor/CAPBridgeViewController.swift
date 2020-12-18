@@ -311,9 +311,15 @@ public class CAPBridgeViewController: UIViewController, CAPBridgeDelegate {
 
     public func setServerBasePath(path: String) {
         setServerPath(path: path)
-        let request = URLRequest(url: URL(string: hostname!)!)
+
+        guard let hostname = hostname,
+          let url = URL(string: hostname)
+          else {
+          return
+        }
+        let request = URLRequest(url: url)
         DispatchQueue.main.async {
-            _ = self.getWebView().load(request)
+          self.getWebView().load(request)
         }
     }
 
